@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Game</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/png" href="favIcon/icons8-memory-game-64.png">
+    <script src="js/script.js" defer></script>
+    <script src="confetti/index.min.js"></script>
+</head>
+
+<body>
+    <!-- for the confetti -->
+    <canvas id="my-canvas"></canvas>
+
+    <button class="toggle-settings" id="toggle-settings">Menu</button>
+
+    <div class="settings active" id="settings">
+        <input type="text" id="user-name" placeholder="Type your name">
+        <input type="number" id="preview-duration" placeholder="preview duration in seconds [0,10]" min="0" max="10">
+        <input type="number" id="maximum-time" placeholder="maximum time in minutes [1,60]" min="1" max="60">
+        <input type="number" id="maximum-tries" placeholder="maximum wrong tries to lose [1,infinity]" min="1">
+        <button id="new-game" autofocus>new game</button>
+    </div>
+
+
+    <div class="memory-game">
+        <div class="status" id="status">waiting...</div>
+        <br>
+        <div class="user-info">
+            <div class="name">
+                Name: <span id="name" contenteditable="true"></span>
+            </div>
+            <div class="best-score">
+                Best Score: <span id="best-score">&#128554;</span>
+            </div>
+            <div class="tries">
+                Wrong Tries: <span id="wrong-tries">0</span>
+            </div>
+            <div class="timer" id="timer">
+                Time Left: <span id="time-left"><span id="minutes">00</span>:<span id="seconds">00</span></span>
+            </div>
+        </div>
+        <div class="game-blocks" id="game-blocks">
+            <div class="game-block" data-tech="html">
+                <div class="face front"></div>
+                <div class="face back">
+                    <img src="images/icons8-html-5-144.png" alt="">
+                </div>
+            </div>
+            <div class="game-block" data-tech="html">
+                <div class="face front"></div>
+                <div class="face back">
+                    <img src="images/icons8-html-5-144.png" alt="">
+                </div>
+            </div>
+            <div class="game-block" data-tech="css">
+                <div class="face front"></div>
+                <div class="face back">
+                    <img src="images/icons8-css3-144.png" alt="">
+                </div>
+            </div>
+            <div class="game-block" data-tech="css">
+                <div class="face front"></div>
+                <div class="face back">
+                    <img src="images/icons8-css3-144.png" alt="">
+                </div>
+            </div>
+            <div class="game-block" data-tech="sass">
+                <div class="face front"></div>
+                <div class="face back">
+                    <img src="images/icons8-sass-144.png" alt="">
+                </div>
+            </div>
+            <div class="game-block" data-tech="sass">
+                <div class="face front"></div>
+                <div class="face back">
+                    <img src="images/icons8-sass-144.png" alt="">
+                </div>
+            </div>
+            <div class="game-block" data-tech="javascript">
+                <div class="face front"></div>
+                <div class="face back">
+                    <img src="images/icons8-javascript-144.png" alt="">
+                </div>
+            </div>
+            <div class="game-block" data-tech="javascript">
+                <div class="face front"></div>
+                <div class="face back">
+                    <img src="images/icons8-javascript-144.png" alt="">
+                </div>
+            </div>
+            <div class="game-block" data-tech="java">
+                <div class="face front"></div>
+                <div class="face back">
+                    <img src="images/icons8-java-144.png" alt="">
+                </div>
+            </div>
+            <div class="game-block" data-tech="java">
+                <div class="face front"></div>
+                <div class="face back">
+                    <img src="images/icons8-java-144.png" alt="">
+                </div>
+            </div>
+            <div class="game-block" data-tech="react">
+                <div class="face front"></div>
+                <div class="face back">
+                    <img src="images/icons8-react-native-144.png" alt="">
+                </div>
+            </div>
+            <div class="game-block" data-tech="react">
+                <div class="face front"></div>
+                <div class="face back">
+                    <img src="images/icons8-react-native-144.png" alt="">
+                </div>
+            </div>
+            <div class="game-block" data-tech="python">
+                <div class="face front"></div>
+                <div class="face back">
+                    <img src="images/icons8-python-144.png" alt="">
+                </div>
+            </div>
+            <div class="game-block" data-tech="python">
+                <div class="face front"></div>
+                <div class="face back">
+                    <img src="images/icons8-python-144.png" alt="">
+                </div>
+            </div>
+            <div class="game-block" data-tech="vue">
+                <div class="face front"></div>
+                <div class="face back">
+                    <img src="images/icons8-vue-js-144.png" alt="">
+                </div>
+            </div>
+            <div class="game-block" data-tech="vue">
+                <div class="face front"></div>
+                <div class="face back">
+                    <img src="images/icons8-vue-js-144.png" alt="">
+                </div>
+            </div>
+            <div class="game-block" data-tech="csharp">
+                <div class="face front"></div>
+                <div class="face back">
+                    <img src="images/icons8-c-sharp-logo-2-144.png" alt="">
+                </div>
+            </div>
+            <div class="game-block" data-tech="csharp">
+                <div class="face front"></div>
+                <div class="face back">
+                    <img src="images/icons8-c-sharp-logo-2-144.png" alt="">
+                </div>
+            </div>
+            <div class="game-block" data-tech="angular">
+                <div class="face front"></div>
+                <div class="face back">
+                    <img src="images/icons8-angularjs-144.png" alt="">
+                </div>
+            </div>
+            <div class="game-block" data-tech="angular">
+                <div class="face front"></div>
+                <div class="face back">
+                    <img src="images/icons8-angularjs-144.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="heart"></div>
+        Made by K.Mesbah
+        <pre>¯\(ツ)/¯</pre>
+        <div class="art">
+            <div class="shadow"></div>
+            <div class="bowl">
+                <div class="liquid"></div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
