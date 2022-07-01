@@ -1,15 +1,9 @@
 # Memory-Game
 
-a memory game made by khalid mesbah
+## A memory game made by me
 
-[click here to view the game](https://khalidmesbah.github.io/Memory-Game/)
+## Gameplay
 
-# Features
-- name
-- best score
-- number of wrong tries
-- number of wrong tries to lose
-- timer if you want it
-- includes animation
-- you can edit the preview duration
-- the blocks are shuffled every time
+![gameplay-1](images/gameplay/gameplay-1.png)
+![gameplay-2](images/gameplay/gameplay-2.png)
+![gameplay-3](images/gameplay/gameplay-3.png)
